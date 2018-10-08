@@ -51,11 +51,17 @@ def set_view(view_id, window, ignore_existing, single_pane):
     if not view:
         view = window.new_file()
         view.settings().add_on_change('color_scheme', lambda: set_proper_scheme(view))
-        view.set_syntax_file('Packages/Outline/outline.hidden-tmLanguage')
+        view.set_syntax_file('Packages/Outline+/outline.hidden-tmLanguage')
         view.set_scratch(True)
         reset_sels = True
+    # Adam: This is not a valid statement ('path is not defined')
+    #       I assume 'path' was meant to point to the .path property of a'outlineBaseCommand' class
+    #       in 'common.py' but this no longer looks used.
+    #else:
+    #    reset_sels = path != view.settings().get('outline_path', '')
     else:
-        reset_sels = path != view.settings().get('outline_path', '')
+      reset_sels = False
+
 
     return (view, reset_sels)
 
@@ -130,6 +136,8 @@ def refresh_sym_view(sym_view, symlist, path):
     if sym_view != None:
         sym_view.settings().erase('symlist')
         sym_view.settings().erase('symkeys')
+        sym_view.settings().erase('current_row')
+        sym_view.settings().erase("do_not_update_source_view")
         sym_view.run_command('outline_refresh', {'symlist': l, 'symkeys': k, 'path': path})
 
 def get_sidebar_views_groups(view):
@@ -143,11 +151,14 @@ def get_sidebar_views_groups(view):
         if 'outline.hidden-tmLanguage' in v.settings().get('syntax'):
             sym_view = v
             sym_group, i = window.get_view_index(sym_view)
+        # this throws exception if 'sym_view' is None
+        #   so I check for and continue if it is.
+        if sym_view is None:
+            continue;
         if u'𝌆' in v.name() and v.id() != sym_view.id():
             fb_view = v
             if fb_view != None:
                 fb_group, j = window.get_view_index(fb_view)
-
     return (sym_view, sym_group, fb_view, fb_group)
 
 def get_sidebar_status(view):
