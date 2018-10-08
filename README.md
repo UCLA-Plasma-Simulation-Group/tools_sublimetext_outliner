@@ -5,7 +5,7 @@
 ![](assets/markdown-img-paste-20181008011255139.png?raw=true)
 
 1. Forked and updated by Adam Tableman for UCLA/IST use. See [original repository](https://github.com/warmdev/SublimeOutline) for the base code on which this code is based/forked.
-2. For Fortran, install the _Fortran+_ Sublime Text Plugin at [https://github.com/UCLA-Plasma-Simulation-Group/tools_sublimetext_fortran(https://github.com/UCLA-Plasma-Simulation-Group/tools_sublimetext_fortran)].  _Fortran+_ fixes a few issues in the Sublime's Fortran support and also makes changes so that the _Outline+_ plugin works better. If _Fortan+_ is installed, the outline will be as shown in the above screenshot with indentation and '----contains----' entries that show where Fortran _contains_ statements occur in the code.
+2. For Fortran, install the _Fortran+_ Sublime Text Plugin at https://github.com/UCLA-Plasma-Simulation-Group/tools_sublimetext_fortran .  _Fortran+_ fixes a few issues in the Sublime's Fortran support and also makes changes so that the _Outline+_ plugin works better. If _Fortan+_ is installed, the outline will be as shown in the above screenshot with indentation and '----contains----' entries that show where Fortran _contains_ statements occur in the code.
 
 ### Installation
 Just 4 easy steps!
